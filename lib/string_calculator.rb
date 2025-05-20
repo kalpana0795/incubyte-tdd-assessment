@@ -34,11 +34,9 @@ class StringCalculator
     end
 
     def raise_error_if_str_contains_negative_numbers(numbers)
-      negative_numbers = numbers.select { |number| number < 0 }
+      negative_numbers = numbers.select { |number| number.negative? }
     
-      if negative_numbers.any?
-        raise "negative numbers not allowed #{negative_numbers.join(',')}"
-      end
+      raise "negative numbers not allowed #{negative_numbers.join(',')}" if negative_numbers.any?
     end
   end
 end
