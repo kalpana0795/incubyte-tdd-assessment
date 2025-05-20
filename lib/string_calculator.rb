@@ -5,6 +5,8 @@ class StringCalculator
 
       return 0 if @str.empty?
 
+      raise_error_if_str_contains_negative_numbers
+
       numbers.sum
     end
 
@@ -25,6 +27,14 @@ class StringCalculator
       return /,|\\n/ unless @str.start_with?('//')
 
       @str.split('\n').first[2]
+    end
+
+    def raise_error_if_str_contains_negative_numbers
+      negative_numbers = numbers.select { |number| number < 0 }
+    
+      if negative_numbers.any?
+        raise "negative numbers not allowed #{negative_numbers[0]}"
+      end
     end
   end
 end
