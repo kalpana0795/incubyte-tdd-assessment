@@ -65,7 +65,7 @@ RSpec.describe StringCalculator do
         let(:str) { '1,2,-4' }
 
         it 'raises error - negative numbers not allowed -4' do
-          expect { subject }.to raise_error('negative numbers not allowed -4')
+          expect { string_sum }.to raise_error('negative numbers not allowed -4')
         end
       end
 
@@ -73,8 +73,16 @@ RSpec.describe StringCalculator do
         let(:str) { '1,-2,-4,5' }
 
         it 'raises error - negative numbers not allowed -2,-4' do
-          expect { subject }.to raise_error('negative numbers not allowed -2,-4')
+          expect { string_sum }.to raise_error('negative numbers not allowed -2,-4')
         end
+      end
+    end
+
+    context 'when string contains numbers bigger than 1000' do
+      let(:str) { '2,1001,5,800' }
+
+      it 'returns 807 for 2,1001,5,800' do
+        expect(string_sum).to eq(807)
       end
     end
   end
