@@ -35,5 +35,13 @@ RSpec.describe StringCalculator do
         expect(string_sum).to eq(45)
       end
     end
+
+    context 'when string contains five comma seperated numbers' do
+      let(:str) { '2,10,33,1,5' }
+
+      it 'returns 51 for 2,10,33,1,5' do
+        expect(string_sum).to eq(51)
+      end
+    end
   end
 end
