@@ -85,5 +85,13 @@ RSpec.describe StringCalculator do
         expect(string_sum).to eq(807)
       end
     end
+
+    context 'when delimeter is longer than one character' do
+      let(:str) { '//[***]\n1***2***3' }
+
+      it 'returns 6 for //[***]\n1***2***3' do
+        expect(string_sum).to eq(6)
+      end
+    end
   end
 end
