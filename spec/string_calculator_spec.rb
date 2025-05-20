@@ -27,5 +27,13 @@ RSpec.describe StringCalculator do
         expect(string_sum).to eq(6)
       end
     end
+
+    context 'when string contains three comma seperated numbers' do
+      let(:str) { '2,10,33' }
+
+      it 'returns 45 for 2,10,33' do
+        expect(string_sum).to eq(45)
+      end
+    end
   end
 end
