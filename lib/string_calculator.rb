@@ -7,7 +7,7 @@ class StringCalculator
 
       raise_error_if_str_contains_negative_numbers(numbers)
 
-      numbers.sum
+      numbers.reject { |number| number > 1000 }.sum
     end
 
     private
