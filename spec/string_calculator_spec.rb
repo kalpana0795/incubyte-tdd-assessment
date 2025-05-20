@@ -93,5 +93,13 @@ RSpec.describe StringCalculator do
         expect(string_sum).to eq(6)
       end
     end
+
+    context 'when string contains multiple custom delimeters' do
+      let(:str) { '//[*][%]\n1*2%3' }
+
+      it 'returns 6 for //[*][%]\n1*2%3' do
+        expect(string_sum).to eq(6)
+      end
+    end
   end
 end
