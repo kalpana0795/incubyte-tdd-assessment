@@ -33,7 +33,7 @@ class StringCalculator
       negative_numbers = numbers.select { |number| number < 0 }
     
       if negative_numbers.any?
-        raise "negative numbers not allowed #{negative_numbers[0]}"
+        raise "negative numbers not allowed #{negative_numbers.join(',')}"
       end
     end
   end
