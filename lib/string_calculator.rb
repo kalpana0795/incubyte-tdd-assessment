@@ -1,15 +1,30 @@
 class StringCalculator
-  def self.add(str)
-    return 0 if str.empty?
+  class << self
+    def add(str)
+      @str = str
 
-    delimeter = /,|\\n/
+      return 0 if @str.empty?
 
-    if str.start_with?('//')
-      delimeter_str, str = str.split('\n')
-      delimeter = delimeter_str[2]
+      numbers.sum
     end
 
-    numbers = str.split(delimeter).map(&:to_i)
-    numbers.sum
+    private
+
+    # Remove the custom delimeter part if necessary
+    def sanitized_str
+      return @str unless @str.start_with?('//')
+
+      @str.split('\n').last
+    end
+
+    def numbers
+      sanitized_str.split(delimeter).map(&:to_i)
+    end
+
+    def delimeter
+      return /,|\\n/ unless @str.start_with?('//')
+
+      @str.split('\n').first[2]
+    end
   end
 end
