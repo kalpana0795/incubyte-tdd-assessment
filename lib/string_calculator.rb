@@ -4,7 +4,7 @@ class StringCalculator
 
     return str.to_i if str.length == 1
 
-    numbers = str.split(',').map(&:to_i)
+    numbers = str.split(/,|\\n/).map(&:to_i)
     numbers.sum
   end
 end
