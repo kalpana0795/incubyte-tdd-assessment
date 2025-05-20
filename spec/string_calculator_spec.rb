@@ -52,7 +52,7 @@ RSpec.describe StringCalculator do
       end
     end
 
-    context 'when string contains custom delimeter' do
+    context 'when string contains custom delimiter' do
       let(:str) { '//;\n1;2' }
 
       it 'returns 3 for //;\n1;2' do
@@ -86,7 +86,7 @@ RSpec.describe StringCalculator do
       end
     end
 
-    context 'when delimeter is longer than one character' do
+    context 'when delimiter is longer than one character' do
       let(:str) { '//[***]\n1***2***3' }
 
       it 'returns 6 for //[***]\n1***2***3' do
@@ -94,7 +94,7 @@ RSpec.describe StringCalculator do
       end
     end
 
-    context 'when string contains multiple custom delimeters' do
+    context 'when string contains multiple custom delimiters' do
       let(:str) { '//[*][%]\n1*2%3' }
 
       it 'returns 6 for //[*][%]\n1*2%3' do
@@ -102,7 +102,7 @@ RSpec.describe StringCalculator do
       end
     end
 
-    context 'when string contains multiple custom delimeters with length longer than one char' do
+    context 'when string contains multiple custom delimiters with length longer than one char' do
       let(:str) { '//[@][***][%][##]\n1***2%3@10##1001' }
 
       it 'returns 6 for //[*][%]\n1*2%3' do
