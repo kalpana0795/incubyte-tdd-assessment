@@ -20,7 +20,7 @@ class StringCalculator
     def extract_delimeter_and_sanitized_str(str)
       if str.start_with?('//')
         delimeter_str, sanitized_str = str.split('\n')
-        delimeter = extract_custom_delimeter(delimeter_str) || delimeter_str[2]
+        delimeter = extract_custom_delimeter(delimeter_str)
         [delimeter, sanitized_str]
       else
         [/,|\\n/, str]
@@ -28,7 +28,9 @@ class StringCalculator
     end
 
     def extract_custom_delimeter(delimeter_str)
-      delimeter_str.scan(/[.*]/)[0]
+      delimeters = delimeter_str.scan(/\[(.*?)\]/)
+
+      delimeters.any? ? Regexp.union(delimeters.flatten) : delimeter_str[2]
     end
 
     def raise_error_if_str_contains_negative_numbers(numbers)
