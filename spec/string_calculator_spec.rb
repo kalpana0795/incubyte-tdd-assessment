@@ -60,11 +60,21 @@ RSpec.describe StringCalculator do
       end
     end
 
-    context 'when string contains negative numbers' do
-      let(:str) { '1,2,-4' }
+    context 'with negative numbers' do
+      context 'when string contains single negative number' do
+        let(:str) { '1,2,-4' }
 
-      it 'raise error negative numbers not allowed -4' do
-        expect { subject }.to raise_error('negative numbers not allowed -4')
+        it 'raises error - negative numbers not allowed -4' do
+          expect { subject }.to raise_error('negative numbers not allowed -4')
+        end
+      end
+
+      context 'when string contains multiple negative number' do
+        let(:str) { '1,-2,-4,5' }
+
+        it 'raises error - negative numbers not allowed -2,-4' do
+          expect { subject }.to raise_error('negative numbers not allowed -2,-4')
+        end
       end
     end
   end
