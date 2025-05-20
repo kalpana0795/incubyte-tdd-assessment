@@ -43,5 +43,13 @@ RSpec.describe StringCalculator do
         expect(string_sum).to eq(51)
       end
     end
+
+    context 'when string contains new lines and commas' do
+      let(:str) { '1\n2,3' }
+
+      it 'returns 6 for 1\n2,3' do
+        expect(string_sum).to eq(6)
+      end
+    end
   end
 end
