@@ -51,5 +51,13 @@ RSpec.describe StringCalculator do
         expect(string_sum).to eq(6)
       end
     end
+
+    context 'when string contains custom delimeter' do
+      let(:str) { '//;\n1;2' }
+
+      it 'returns 3 for //;\n1;2' do
+        expect(string_sum).to eq(3)
+      end
+    end
   end
 end
