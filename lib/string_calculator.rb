@@ -1,35 +1,32 @@
 class StringCalculator
   class << self
     def add(str)
-      @str = str
+      return 0 if str.empty?
 
-      return 0 if @str.empty?
+      numbers = parse_numbers(str)
 
-      raise_error_if_str_contains_negative_numbers
+      raise_error_if_str_contains_negative_numbers(numbers)
 
       numbers.sum
     end
 
     private
 
-    # Remove the custom delimeter part if necessary
-    def sanitized_str
-      return @str unless @str.start_with?('//')
-
-      @str.split('\n').last
-    end
-
-    def numbers
+    def parse_numbers(str)
+      delimeter, sanitized_str = extract_delimeter_and_sanitized_str(str)
       sanitized_str.split(delimeter).map(&:to_i)
     end
 
-    def delimeter
-      return /,|\\n/ unless @str.start_with?('//')
-
-      @str.split('\n').first[2]
+    def extract_delimeter_and_sanitized_str(str)
+      if str.start_with?('//')
+        delimeter_str, sanitized_str = str.split('\n')
+        [delimeter_str[2], sanitized_str]
+      else
+        [/,|\\n/, str]
+      end
     end
 
-    def raise_error_if_str_contains_negative_numbers
+    def raise_error_if_str_contains_negative_numbers(numbers)
       negative_numbers = numbers.select { |number| number < 0 }
     
       if negative_numbers.any?
