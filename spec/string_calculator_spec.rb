@@ -19,5 +19,13 @@ RSpec.describe StringCalculator do
         expect(string_sum).to eq(1)
       end
     end
+
+    context 'when string contains two comma seperated numbers' do
+      let(:str) { '1,5' }
+
+      it 'returns 6 for 1,5' do
+        expect(string_sum).to eq(6)
+      end
+    end
   end
 end
